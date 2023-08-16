@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { Layout } from "../../layouts";
+import { Layout } from "layouts";
 
 export default function FirstPost() {
   return (
