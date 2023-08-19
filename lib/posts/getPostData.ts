@@ -6,12 +6,14 @@ import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-export async function getPostData(id: string): Promise<{
+export const getPostData = async (
+  id: string
+): Promise<{
   date: string;
   title: string;
   id: string;
   contentHtml: string;
-}> {
+}> => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
@@ -30,4 +32,4 @@ export async function getPostData(id: string): Promise<{
     contentHtml,
     ...(matterResult.data as { date: string; title: string }),
   };
-}
+};

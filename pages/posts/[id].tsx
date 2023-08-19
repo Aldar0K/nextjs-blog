@@ -19,8 +19,8 @@ type Props = {
   postData: {
     id: string;
     title: string;
-    contentHtml: string;
     date: string;
+    contentHtml: string;
   };
 };
 
@@ -44,6 +44,8 @@ const Post = ({ postData }: InferGetStaticPropsType<typeof getStaticProps>) => {
       {postData.id}
       <br />
       {postData.date}
+      <br />
+      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
   );
 };
