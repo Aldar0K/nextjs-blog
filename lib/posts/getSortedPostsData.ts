@@ -4,7 +4,11 @@ import path from "path";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-export const getSortedPostsData = () => {
+export const getSortedPostsData = (): {
+  date: string;
+  title: string;
+  id: string;
+}[] => {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {

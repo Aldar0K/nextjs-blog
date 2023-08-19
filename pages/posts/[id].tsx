@@ -3,7 +3,11 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { Layout } from "layouts";
 import { getAllPostIds, getPostData } from "lib";
 
-export const getStaticPaths: GetStaticPaths = async () => {
+type Params = {
+  id: string;
+};
+
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const paths = getAllPostIds();
   return {
     paths,
@@ -18,10 +22,6 @@ type Props = {
     contentHtml: string;
     date: string;
   };
-};
-
-type Params = {
-  id: string;
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (
