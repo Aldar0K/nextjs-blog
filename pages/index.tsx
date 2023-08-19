@@ -1,5 +1,7 @@
+import { DateComponent } from "componets";
 import { GetStaticProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 import { getSortedPostsData } from "lib";
 import utilStyles from "styles/utils.module.css";
@@ -53,11 +55,11 @@ const Home = ({ allPostsData }: HomeProps) => {
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <DateComponent dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
