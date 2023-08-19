@@ -23,6 +23,14 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   return {
+//     props: {
+//        props for your component
+//     },
+//   };
+// }
+
 const Home = ({ allPostsData }: HomeProps) => {
   return (
     <Layout home>
