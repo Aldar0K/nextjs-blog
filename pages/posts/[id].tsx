@@ -1,7 +1,11 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import Head from "next/head";
 
-import { Layout } from "layouts";
 import { getAllPostIds, getPostData } from "lib";
+import utilStyles from "styles/utils.module.css";
+
+import { DateComponent } from "componets";
+import { Layout } from "layouts";
 
 type Params = {
   id: string;
@@ -39,13 +43,17 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
 const Post = ({ postData }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout>
-      {postData.title}
-      <br />
-      {postData.id}
-      <br />
-      {postData.date}
-      <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
+
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <div className={utilStyles.lightText}>
+          <DateComponent dateString={postData.date} />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </article>
     </Layout>
   );
 };
