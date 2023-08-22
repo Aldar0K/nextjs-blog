@@ -31,7 +31,8 @@ type Props = {
 export const getStaticProps: GetStaticProps<Props, Params> = async (
   context
 ) => {
-  const id = context.params.id;
+  // const id = context.params.id;
+  const id = "";
   const postData = await getPostData(id);
   return {
     props: {
