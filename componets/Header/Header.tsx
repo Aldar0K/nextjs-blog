@@ -15,6 +15,7 @@ const Header: FC<HeaderProps> = ({ name, home = false }) => {
     <header className={styles.header}>
       <nav className="flex gap-2">
         <Link href="/">Home</Link>
+        <Link href="/posts">Posts</Link>
         <Link href="/about">About</Link>
       </nav>
 

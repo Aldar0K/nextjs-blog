@@ -2,13 +2,11 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ReactNode } from "react";
 
+import { authorName, siteTitle } from "const";
 import "styles/global.css";
 import styles from "./layout.module.css";
 
 import { Header } from "componets";
-
-const name = "Aldar";
-export const siteTitle = "Aldar Blog";
 
 export const metadata: Metadata = {
   title: siteTitle,
@@ -29,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="body">
         <div className={styles.container}>
-          <Header name={name} home={home} />
+          <Header name={authorName} home={home} />
           <main>{children}</main>
           {!home && (
             <div className={styles.backToHome}>

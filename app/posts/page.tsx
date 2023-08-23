@@ -1,45 +1,24 @@
-import { DateComponent } from "componets";
-import { GetStaticProps } from "next";
-import Head from "next/head";
+import { Metadata } from "next";
 import Link from "next/link";
 
+import { siteTitle } from "const";
 import { getSortedPostsData } from "lib";
 import utilStyles from "styles/utils.module.css";
 
-import { Layout, siteTitle } from "layouts";
+import { DateComponent } from "componets";
 
-type HomeProps = {
-  allPostsData: {
-    date: string;
-    title: string;
-    id: string;
-  }[];
+export const asd = async () => {};
+
+export const metadata: Metadata = {
+  title: `Posts | ${siteTitle}`,
+  keywords: ["About"],
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-};
+const Posts = async () => {
+  const allPostsData = await getSortedPostsData();
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   return {
-//     props: {
-//        props for your component
-//     },
-//   };
-// }
-
-const Home = ({ allPostsData }: HomeProps) => {
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-
+    <>
       <section className={utilStyles.headingMd}>
         <p className="text-red-50">
           Hello, I'm Aldar. I'm a frontend developer. You can contact me (no)
@@ -64,8 +43,8 @@ const Home = ({ allPostsData }: HomeProps) => {
           ))}
         </ul>
       </section>
-    </Layout>
+    </>
   );
 };
 
-export default Home;
+export default Posts;

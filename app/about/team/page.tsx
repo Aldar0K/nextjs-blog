@@ -3,12 +3,12 @@ import { Metadata } from "next";
 import { siteTitle } from "const";
 
 export const metadata: Metadata = {
-  title: `About | ${siteTitle}`,
+  title: `Team | ${siteTitle}`,
   keywords: ["About"],
 };
 
-const About = () => {
-  return <h2>Select subitem</h2>;
+const Team = () => {
+  return <h1>Team</h1>;
 };
 
-export default About;
+export default Team;
