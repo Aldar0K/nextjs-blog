@@ -7,8 +7,6 @@ import utilStyles from "styles/utils.module.css";
 
 import { DateComponent } from "componets";
 
-export const asd = async () => {};
-
 export const metadata: Metadata = {
   title: `Posts | ${siteTitle}`,
   keywords: ["About"],
