@@ -10,10 +10,11 @@ type HeaderProps = {
   home?: boolean;
 };
 
+// TODO turn to client component, show active link (custom component?).
 const Header: FC<HeaderProps> = ({ name, home = false }) => {
   return (
     <header className={styles.header}>
-      <nav className="flex gap-2">
+      <nav className="flex gap-[8px]">
         <Link href="/">Home</Link>
         <Link href="/posts">Posts</Link>
         <Link href="/about">About</Link>

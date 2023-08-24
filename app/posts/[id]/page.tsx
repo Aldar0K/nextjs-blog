@@ -4,7 +4,7 @@ import { siteTitle } from "const";
 import { getPostData } from "lib";
 import utilStyles from "styles/utils.module.css";
 
-import { DateComponent } from "componets";
+import { DateComponent } from "components";
 
 type PostProps = {
   params: {

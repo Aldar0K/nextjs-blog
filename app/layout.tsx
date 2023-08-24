@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 import { authorName, siteTitle } from "const";
-import "styles/global.css";
+import "styles/main.css";
 import styles from "./layout.module.css";
 
-import { Header } from "componets";
+import { Header } from "components";
 
 export const metadata: Metadata = {
   title: siteTitle,

@@ -5,7 +5,7 @@ import { siteTitle } from "const";
 import { getSortedPostsData } from "lib";
 import utilStyles from "styles/utils.module.css";
 
-import { DateComponent } from "componets";
+import { DateComponent } from "components";
 
 export const metadata: Metadata = {
   title: `Posts | ${siteTitle}`,
@@ -18,7 +18,7 @@ const Posts = async () => {
   return (
     <>
       <section className={utilStyles.headingMd}>
-        <p className="text-red-50">
+        <p>
           Hello, I'm Aldar. I'm a frontend developer. You can contact me (no)
         </p>
         <p>
