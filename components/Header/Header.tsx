@@ -3,22 +3,19 @@ import Link from "next/link";
 import { FC } from "react";
 
 import utilStyles from "styles/utils.module.css";
-import styles from "./Header.module.css";
+import { navItems } from "./const";
+
+import { Navigation } from "components";
 
 type HeaderProps = {
   name: string;
   home?: boolean;
 };
 
-// TODO turn to client component, show active link (custom component?).
 const Header: FC<HeaderProps> = ({ name, home = false }) => {
   return (
-    <header className={styles.header}>
-      <nav className="flex gap-[8px]">
-        <Link href="/">Home</Link>
-        <Link href="/posts">Posts</Link>
-        <Link href="/about">About</Link>
-      </nav>
+    <header className="flex flex-col items-center bg-slate-200">
+      <Navigation navItems={navItems} />
 
       {home ? (
         <>
