@@ -1,2 +1,2 @@
 export * from "./getCard";
-export * from "./getCards";
+export * from "./getCardsByName";

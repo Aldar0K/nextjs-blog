@@ -4,7 +4,7 @@ import { LotrCard, LotrResponse } from "models/lotr";
 export const BASE_URL = "https://the-one-api.dev/v2";
 export const CHARACTERS_URL = `${BASE_URL}/character`;
 
-export const getCards = async (name = ""): Promise<LotrCard[]> => {
+export const getCardsByName = async (name = ""): Promise<LotrCard[]> => {
   // TODO take as params
   const limit = 10;
   const sortBy = "name";
