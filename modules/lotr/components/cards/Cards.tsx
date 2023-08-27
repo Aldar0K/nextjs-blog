@@ -2,10 +2,9 @@
 
 import { Metadata } from "next";
 import { FC } from "react";
-import useSWR from "swr";
 
-import { getCardsByName } from "api/lotr";
 import { siteTitle } from "const";
+import { useCardsQuery } from "modules/lotr/hooks";
 import { LotrStore } from "store/lotr";
 import utilStyles from "styles/utils.module.css";
 
@@ -21,10 +20,7 @@ const selector = (state: LotrStore) => ({
 });
 
 const Cards: FC = () => {
-  const { data: cards, isLoading } = useSWR(
-    "lotr/cards",
-    async () => await getCardsByName("")
-  );
+  const { data: cards, isLoading } = useCardsQuery();
 
   return (
     <section className={utilStyles.headingMd}>
