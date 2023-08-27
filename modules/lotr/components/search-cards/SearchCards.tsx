@@ -1,16 +1,19 @@
 "use client";
 
 import { FC, FormEventHandler, useState } from "react";
-import { useLotrStore } from "store";
+import useSWR from "swr";
+
+import { getCardsByName } from "api/lotr";
 
 const SearchCards: FC = () => {
+  const { mutate } = useSWR("lotr/cards");
   const [search, setSearch] = useState("");
-  const getCardsBySearch = useLotrStore((state) => state.getCardsBySearch);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    getCardsBySearch(search);
+    const cards = await getCardsByName(search);
+    mutate(cards);
   };
 
   return (

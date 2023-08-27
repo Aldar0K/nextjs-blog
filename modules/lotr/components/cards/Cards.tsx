@@ -1,11 +1,12 @@
 "use client";
 
 import { Metadata } from "next";
-import { FC, useEffect } from "react";
-import { shallow } from "zustand/shallow";
+import { FC } from "react";
+import useSWR from "swr";
 
+import { getCardsByName } from "api/lotr";
 import { siteTitle } from "const";
-import { LotrStore, useLotrStore } from "store/lotr";
+import { LotrStore } from "store/lotr";
 import utilStyles from "styles/utils.module.css";
 
 export const metadata: Metadata = {
@@ -20,24 +21,29 @@ const selector = (state: LotrStore) => ({
 });
 
 const Cards: FC = () => {
-  const { cards, loading, getAllCards } = useLotrStore(selector, shallow);
-
-  useEffect(() => {
-    getAllCards();
-  }, []);
+  const { data: cards, isLoading } = useSWR(
+    "lotr/cards",
+    async () => await getCardsByName("")
+  );
 
   return (
     <section className={utilStyles.headingMd}>
       <h2 className={utilStyles.headingLg}>Cards:</h2>
 
-      {loading ? (
+      {isLoading ? (
         <h2>Loading...</h2>
       ) : (
-        <ul className={utilStyles.list}>
-          {cards.map((card) => (
-            <li key={card._id}>{card.name}</li>
-          ))}
-        </ul>
+        <>
+          {cards ? (
+            <ul className={utilStyles.list}>
+              {cards.map((card) => (
+                <li key={card._id}>{card.name}</li>
+              ))}
+            </ul>
+          ) : (
+            <h2>Can't fetch cards</h2>
+          )}
+        </>
       )}
     </section>
   );
