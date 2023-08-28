@@ -20,24 +20,30 @@ const selector = (state: LotrStore) => ({
 });
 
 const Cards: FC = () => {
-  const { data: cards, isLoading } = useCardsQuery();
+  const { data: cards, isLoading, isValidating, error } = useCardsQuery();
 
   return (
     <section className={utilStyles.headingMd}>
       <h2 className={utilStyles.headingLg}>Cards:</h2>
 
-      {isLoading ? (
+      {isLoading || isValidating ? (
         <h2>Loading...</h2>
       ) : (
         <>
-          {cards ? (
-            <ul className={utilStyles.list}>
-              {cards.map((card) => (
-                <li key={card._id}>{card.name}</li>
-              ))}
-            </ul>
+          {!!error ? (
+            <h2>Error(error)</h2>
           ) : (
-            <h2>Can't fetch cards</h2>
+            <>
+              {!!cards?.length ? (
+                <ul className={utilStyles.list}>
+                  {cards.map((card) => (
+                    <li key={card._id}>{card.name}</li>
+                  ))}
+                </ul>
+              ) : (
+                <h2>No cards</h2>
+              )}
+            </>
           )}
         </>
       )}

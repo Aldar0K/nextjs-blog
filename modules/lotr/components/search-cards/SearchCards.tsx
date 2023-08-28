@@ -16,6 +16,7 @@ const SearchCards: FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        id="search"
         type="search"
         placeholder="search"
         value={search}
