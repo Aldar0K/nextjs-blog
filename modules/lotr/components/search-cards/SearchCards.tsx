@@ -6,7 +6,7 @@ import { useCardsQuery } from "modules/lotr/hooks";
 
 const SearchCards: FC = () => {
   const [search, setSearch] = useState("");
-  const { mutate } = useCardsQuery(search);
+  const { mutate, isValidating, isLoading } = useCardsQuery(search);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
@@ -22,7 +22,9 @@ const SearchCards: FC = () => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <button type="submit">Search</button>
+      <button type="submit" disabled={isValidating || isLoading}>
+        Search
+      </button>
     </form>
   );
 };

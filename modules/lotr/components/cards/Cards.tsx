@@ -31,7 +31,7 @@ const Cards: FC = () => {
       ) : (
         <>
           {!!error ? (
-            <h2>Error(error)</h2>
+            <h2>Error ({error.message})</h2>
           ) : (
             <>
               {!!cards?.length ? (
