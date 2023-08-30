@@ -1,4 +1,4 @@
 export * from "./DateComponent";
 export * from "./ImageComponent";
-export * from "./header";
+export { Header } from "./header";
 export * from "./navigation";
