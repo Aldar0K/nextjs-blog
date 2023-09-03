@@ -6,7 +6,7 @@ import { authorName, siteTitle } from "const";
 import "styles/main.css";
 import styles from "./layout.module.css";
 
-import { Header } from "components";
+import { Header, Providers } from "components";
 
 export const metadata: Metadata = {
   title: siteTitle,
@@ -25,17 +25,19 @@ export default function RootLayout({
 }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className="body">
-        <div className={styles.container}>
-          <Header name={authorName} home={home} />
-          <main>{children}</main>
-          {!home && (
-            <div className={styles.backToHome}>
-              <Link href="/">← Back to home</Link>
-            </div>
-          )}
-        </div>
-      </body>
+      <Providers>
+        <body className="body">
+          <div className={styles.container}>
+            <Header name={authorName} home={home} />
+            <main>{children}</main>
+            {!home && (
+              <div className={styles.backToHome}>
+                <Link href="/">← Back to home</Link>
+              </div>
+            )}
+          </div>
+        </body>
+      </Providers>
     </html>
   );
 }

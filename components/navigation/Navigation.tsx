@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC } from "react";
@@ -12,6 +13,8 @@ type NavigationProps = {
 
 const Navigation: FC<NavigationProps> = ({ navItems }) => {
   const pathname = usePathname();
+  const session = useSession();
+  console.log(session);
 
   return (
     <nav className="flex gap-[8px]">
