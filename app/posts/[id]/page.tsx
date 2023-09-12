@@ -1,7 +1,9 @@
+// (SSG) automatically generated as static HTML + JSON (uses getStaticProps)
+
 import { Metadata, ResolvingMetadata } from "next";
 
 import { siteTitle } from "const";
-import { getPostData } from "lib";
+import { getAllPostIds, getPostData } from "lib";
 import utilStyles from "styles/utils.module.css";
 
 import { DateComponent } from "components";
@@ -10,6 +12,11 @@ type PostProps = {
   params: {
     id: string;
   };
+};
+
+export const generateStaticParams = async () => {
+  const postIds = await getAllPostIds();
+  return postIds;
 };
 
 export const generateMetadata = async (

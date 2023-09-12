@@ -1,3 +1,5 @@
+// (Static) automatically rendered as static HTML (uses no initial props)
+
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -9,7 +11,7 @@ import { DateComponent } from "components";
 
 export const metadata: Metadata = {
   title: `Posts | ${siteTitle}`,
-  keywords: ["About"],
+  keywords: ["Posts", siteTitle],
 };
 
 const Posts = async () => {

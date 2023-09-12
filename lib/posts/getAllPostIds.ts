@@ -1,19 +1,17 @@
-import fs from "fs";
+import fsp from "fs/promises";
 import path from "path";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-export const getAllPostIds = (): {
-  params: {
+export const getAllPostIds = async (): Promise<
+  {
     id: string;
-  };
-}[] => {
-  const fileNames = fs.readdirSync(postsDirectory);
+  }[]
+> => {
+  const fileNames = await fsp.readdir(postsDirectory);
   return fileNames.map((fileName) => {
     return {
-      params: {
-        id: fileName.replace(/\.md$/, ""),
-      },
+      id: fileName.replace(/\.md$/, ""),
     };
   });
 };
