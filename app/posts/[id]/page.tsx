@@ -14,6 +14,9 @@ type PostProps = {
   };
 };
 
+// ISR revalidate time
+export const revalidate = 10;
+
 export const generateStaticParams = async () => {
   const postIds = await getAllPostIds();
   return postIds;
