@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   keywords: ["Posts", siteTitle],
 };
 
+// ISR revalidate time
+export const revalidate = 10;
+
 const Posts = async () => {
   const allPostsData = await getSortedPostsData();
 
